@@ -7,6 +7,7 @@ import store from './store'
 // Styles
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import '@/assets/css/main.styl'
 
 // Components
 import BaseLoading from '@/components/BaseLoading'
