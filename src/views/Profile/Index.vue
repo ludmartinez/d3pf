@@ -3,10 +3,11 @@
     <base-loading
       v-if="isLoading"
       :show="isLoading"
-      spinnerVariant="dark"
+      variant="transparent"
+      spinnerVariant="light"
       :no-wrap="false"
+      class="py-5"
     ></base-loading>
-    <h1>Profile View</h1>
     <template v-if="!isLoading">
       <main-block :profile-data="profileData"></main-block>
     </template>

@@ -2,6 +2,7 @@
   <div class="grid-container">
     <div class="grid-item item-left">
       <top-heroes v-if="hasHeroes" :heroes="topHeroes"></top-heroes>
+      <heroes-list v-if="hasHeroes" :heroes="heroesList"></heroes-list>
     </div>
     <div class="grid-item item-right">
       <h1>Derecha</h1>
@@ -11,11 +12,12 @@
 
 <script>
 import TopHeroes from '@/views/Profile/MainBlock/TopHeroes/Index'
+import HeroesList from '@/views/Profile/MainBlock/HeroesList/Index'
 
 export default {
   name: 'MainBlock',
 
-  components: { TopHeroes },
+  components: { TopHeroes, HeroesList },
 
   props: {
     profileData: {
@@ -32,6 +34,13 @@ export default {
     // Devolvemos los 3 primeros
     topHeroes () {
       return this.profileData.heroes.slice(0, 3)
+    },
+    hasHeroesList () {
+      return this.profileData.heroes.length > 3
+    },
+    heroesList () {
+      return this.profileData.heroes.slice(3,
+        this.profileData.heroes.length)
     }
   }
 }

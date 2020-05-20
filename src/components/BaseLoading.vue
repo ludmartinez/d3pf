@@ -37,7 +37,8 @@ export default {
           'danger',
           'info',
           'light',
-          'dark'
+          'dark',
+          'transparent'
         ]
           .indexOf(value) !== -1
       }
