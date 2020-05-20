@@ -1,20 +1,31 @@
 <template>
   <div>
-    <base-loading :show="isLoading" spinnerVariant="dark" no-wrap="false"></base-loading>
+    <base-loading
+      v-if="isLoading"
+      :show="isLoading"
+      spinnerVariant="dark"
+      :no-wrap="false"
+    ></base-loading>
     <h1>Profile View</h1>
+    <template v-if="!isLoading">
+      <main-block :profile-data="profileData"></main-block>
+    </template>
   </div>
 </template>
 
 <script>
 import { getApiAccount } from '@/api/search'
 import setError from '@/mixins/setError'
+import MainBlock from '@/views/Profile/MainBlock/Index'
 
 export default {
   name: 'ProfileView',
 
-  mixins: [
-    setError
-  ],
+  mixins: [setError],
+
+  components: {
+    MainBlock
+  },
 
   data () {
     return {
