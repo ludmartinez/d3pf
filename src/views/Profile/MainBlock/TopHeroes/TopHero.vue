@@ -1,6 +1,6 @@
 <template>
   <!-- Contenedor principal -->
-  <div class="hero-portrait-wrapper mb-5 mb-sm-0">
+  <div class="hero-portrait-wrapper mb-5 mb-sm-0 hover-cursor-pointer" @click="goToHero(hero.id)">
     <!-- Avatar -->
     <div class="bg-secondary d-flex justify-content-center p-3 p-sm-0">
       <!-- Imagen de fondo, según la clase y el género -->
@@ -11,22 +11,31 @@
       <!-- Si es hardcore, pintamos el fondo rojo -->
       <h5
         class="text-truncate m-0 text-center title-name font-diablo"
-        :class="{'bg-danger': hero.hardcore}"
+        :class="{ 'bg-danger': hero.hardcore }"
       >
         {{ hero.name }}
         <!-- Si es condicional, pintamos la hoja verde -->
-        <img v-if="hero.seasonal" src="@/assets/img/leaf.png" width="12px" class />
+        <img
+          v-if="hero.seasonal"
+          src="@/assets/img/leaf.png"
+          width="12px"
+          class
+        />
       </h5>
       <div
         class="d-flex justify-content-between border-top border-secondary pt-2 align-items-center mt-2"
       >
         <small class="elite-kills">
           <!-- Jefes (Élites) asesinados -->
-          <span class="text-monospace">{{ hero.kills.elites | formatNumber }}</span>
+          <span class="text-monospace">{{
+            hero.kills.elites | formatNumber
+          }}</span>
           Elite kills
         </small>
         <!-- Nivel. De color rojo si el héroe está muerto -->
-        <small class="level-circle" :class="{'text-danger': hero.dead}">{{ hero.level }}</small>
+        <small class="level-circle" :class="{ 'text-danger': hero.dead }">{{
+          hero.level
+        }}</small>
       </div>
     </div>
   </div>
@@ -34,9 +43,12 @@
 
 <script>
 import { formatNumber } from '@/filters/numeral'
+import goToHero from '@/mixins/goToHero'
 
 export default {
   name: 'TopHero',
+
+  mixins: [goToHero],
 
   props: {
     hero: {
