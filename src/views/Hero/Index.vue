@@ -23,6 +23,7 @@
           class="py-5"
           v-if="isLoading"
         ></base-loading>
+        <hero-items v-if="items" :items="items" />
       </b-col>
 
       <!-- 12 columnas de 'xs' -> 'md', 4 columnas desde 'lg' hacia arriba -->
@@ -42,7 +43,8 @@ import setError from '@/mixins/setError'
 import { getApiHero, getApiDetailedHeroItems } from '../../api/search'
 import HeroDetailHeader from './HeroDetailHeader'
 import HeroSkills from './HeroSkills/Index'
-import HeroAttributes from './HeroAttributes/Index.vue'
+import HeroAttributes from './HeroAttributes/Index'
+import HeroItems from './HeroItems/Index'
 
 export default {
   name: 'HeroView',
@@ -52,7 +54,8 @@ export default {
   components: {
     HeroDetailHeader,
     HeroSkills,
-    HeroAttributes
+    HeroAttributes,
+    HeroItems
   },
 
   data () {
