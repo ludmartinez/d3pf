@@ -2,6 +2,7 @@ import Vue from 'vue'
 // Plugins
 import '@/plugins/bootstrapVue'
 import '@/plugins/fontAwesome'
+import './directives/index'
 // Vue extensions
 import router from './router'
 import store from './store'
